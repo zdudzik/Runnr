@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "runnr-bcdd7": {
+      "hosting": {
+        "Runnr": [
+          "runnr-bcdd7"
+        ]
+      }
+    }
+  }
+}
