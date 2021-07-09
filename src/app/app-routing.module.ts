@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { RunnrGuard } from './guards/runnr.guard';
+import { HomeComponent } from './components/home/home.component';
 
 const routes : Routes =[
   {
     path: '',
-    loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule), // lazy load home
+    component: HomeComponent,
     canActivate: [RunnrGuard],
   },
   {

@@ -1,1 +1,91 @@
-<p>home works!</p>
+<div class="home-container">
+    <div class="home__header">
+      <div class="home__header__left">
+        <img mat-card-avatar src="assets/temp-logo-icon.jpg"/>
+  
+      </div>
+      <div class="home__header__middle">
+        <div class="active">
+          <mat-icon>home</mat-icon>
+        </div>
+        <div>
+          <mat-icon>public</mat-icon>
+        </div>
+        <div>
+          <mat-icon>group</mat-icon>
+        </div>
+  
+      </div>
+      <div class="home__header__right">
+  
+        <div>
+          <mat-icon matBadge="3"
+                    matBadgeColor="warn"
+                    matBadgeOverlap="false">notifications
+          </mat-icon>
+        </div>
+  
+  
+        <div>
+  
+          <mat-icon [matMenuTriggerFor]="menu">menu</mat-icon>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="logout()">
+              <mat-icon>exit_to_app</mat-icon> Logout
+            </button>
+          </mat-menu>
+        </div>
+  
+      </div>
+    </div>
+  
+    <div class="home__body">
+  
+      <div class="home__body__sidebarLeft">
+      </div>
+  
+      <div class="home__body__contentMiddle">  
+        <div class="home__body__contentMiddle__center">
+          <mat-card class="post-message">
+            <mat-card-header class="post-message-header"
+                             style="padding-bottom: 20px; border-bottom: 1px solid lightgray;">
+              <form #form="ngForm" (ngSubmit)="postMessage(form)">
+                <input class="on-your-mind" name="message" ngModel placeholder="How's Your Running?" type="text">
+                <button style="display: none;" type="submit"></button>
+              </form>
+  
+            </mat-card-header>
+            <mat-card-content class="card-body">  
+              <div>
+                <mat-icon color="primary">image</mat-icon>
+                <span>Photo</span>
+              </div>
+  
+              <div>
+                <mat-icon color="warn">directions_run</mat-icon>
+                <span>Activity</span>
+              </div>
+            </mat-card-content>
+          </mat-card>
+  
+          <!--Loop Through All Posts From Database and Display
+          <mat-card *ngFor="let p of posts" class="posts">
+            <mat-card-header class="posts__header">
+              <img alt="{{ p?.title }}" mat-card-avatar [src]="p?.avatar">
+              <div class="posts__header__right">
+                <span>{{ p?.time?.seconds * 1000 | date:'shortTime' }}</span>
+                <h3>{{ p?.title }}</h3>
+              </div>
+            </mat-card-header>
+            <mat-card-content class="posts__body">
+              <p>{{ p?.message }}</p>
+            </mat-card-content>
+          </mat-card>-->
+        </div>
+      </div>
+  
+      <div class="home__body__sidebarRight">
+      </div>
+  
+    </div>
+  </div>
