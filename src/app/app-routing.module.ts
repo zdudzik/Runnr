@@ -4,12 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { RunnrGuard } from './guards/runnr.guard';
 import { HomeComponent } from './components/home/home.component';
+import { AppComponent } from './app.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes : Routes =[
   {
     path: '',
     component: HomeComponent,
-    canActivate: [RunnrGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'login',

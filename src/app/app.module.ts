@@ -7,12 +7,14 @@ import {MaterialModule} from './shared/material.module';
 import {AppRoutingModule} from './app-routing.module';
 import {LoginComponent} from './components/login/login.component';
 import {FormsModule} from '@angular/forms';
-import {AngularFireModule} from '@angular/fire';
-import {environment} from '../environments/environment';
-import {AngularFirestoreModule} from '@angular/fire/firestore';
-import {AngularFireAuthModule} from '@angular/fire/auth';
+
 import {HomeModule} from './components/home/home.module';
 import { RegisterComponent } from './components/register/register.component';
+
+import {AngularFireModule} from '@angular/fire';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -26,9 +28,9 @@ import { RegisterComponent } from './components/register/register.component';
     MaterialModule,
     AppRoutingModule,
     FormsModule,
-    //AngularFireModule.initializeApp(environment.firebaseConfig),
-    //AngularFirestoreModule,
-    //AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     HomeModule
   ],
   providers: [],

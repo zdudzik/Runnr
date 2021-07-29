@@ -1,4 +1,5 @@
-<div class="home-container">
+<div *ngIf="auth.user$ | async as user; else login">
+  <div class="home-container">
     <div class="home__header">
       <div class="home__header__left">
         <img mat-card-avatar src="assets/temp-logo-icon.jpg"/>
@@ -19,18 +20,10 @@
       <div class="home__header__right">
   
         <div>
-          <mat-icon matBadge="3"
-                    matBadgeColor="warn"
-                    matBadgeOverlap="false">notifications
-          </mat-icon>
-        </div>
-  
-  
-        <div>
   
           <mat-icon [matMenuTriggerFor]="menu">menu</mat-icon>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="logout()">
+            <button mat-menu-item (click)="auth.signOut()">
               <mat-icon>exit_to_app</mat-icon> Logout
             </button>
           </mat-menu>
@@ -88,4 +81,8 @@
       </div>
   
     </div>
-  </div>
+</div>
+</div>
+<ng-template #login>
+  <button class="button" (click)="auth.googleSignin()">Login with Google</button>
+</ng-template>

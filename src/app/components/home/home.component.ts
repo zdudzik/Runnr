@@ -10,11 +10,7 @@ import {AuthService, UserData} from '../../services/auth.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  //subs: Subscription[] = [];
-  //posts: any[] = [];
-  //user: UserData;
-
-  constructor() {}
+  constructor(public auth: AuthService) {}
 
   async ngOnInit(): Promise<void> {
   }
