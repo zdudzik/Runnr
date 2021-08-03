@@ -10,14 +10,37 @@ import {AuthService, UserData} from '../../services/auth.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  constructor(public auth: AuthService) {}
+  subs: Subscription[] = [];
+  posts: any[] = [];
+  user: UserData;
+
+  constructor(private postService: PostService,
+              public authService: AuthService) {}
 
   async ngOnInit(): Promise<void> {
+    this.subs.push(this.postService.getAllPosts().subscribe(async (posts) => {
+      this.posts = posts;
+      console.log(posts);
+    }));
+
+    this.subs.push(this.authService.CurrentUser().subscribe(user => {
+      this.user = user;
+      console.log(user);
+    }));
   }
 
   postMessage(form: NgForm): void {
+    const {message} = form.value;
+    this.postService.postMessage(message,
+      `${this.user.displayName}`,
+      {
+        dispalyName: this.user.displayName
+      },
+    );
+    form.resetForm();
   }
 
   logout(): void {
+    this.authService.signOut();
   }
 }

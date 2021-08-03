@@ -55,6 +55,10 @@ export class AuthService {
     return userRef.set(data, { merge: true }); //set is a destructive method. to prevent overwritting for returning users we have merge true
   }
 
+  CurrentUser(): Observable<UserData> {
+    return this.user$;
+  }
+
 }
 
 export interface UserData {
